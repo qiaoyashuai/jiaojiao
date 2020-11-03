@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>用户登录</title>
+    <link rel="stylesheet" href="/bootstrap.css" />
+    <link rel="stylesheet" href="/login.css" />
+    <link rel="stylesheet" href="/basic.css" />
+    <script src="/jquery-1.10.1.js"></script>
+    <script src="/bootstrap.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 网格系统 -->
+        <div class="row">
+            <!-- col-md-offset-*  偏移量 col-md-6 列数 -->
+            <div class="col-md-offset-3 col-md-6">
+                <!-- form-horizontal 使表单里面横向排列 -->
+                <form class="form-horizontal" action="/admin/session" method="POST">
+                    <!-- heading  页面标题 -->
+                    <span class="heading">用户登录</span>
+                    <!-- form-group  创建垂直表单 下面的每一个控件中都需要添加类名form-control -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="inputEmail3" name="unames" placeholder="用户名或电子邮件" />
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control" name="paw" id="inputPassword3" placeholder="密　码" />
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group">
+                        <!-- 按钮   btn-default 普通按钮  btn-block 块级按钮-->
+                        <input type="submit" value="登录" id="btn" class="btn btn-default btn-block" />
+                        <!-- <button type="button" class="btn btn-default btn-block" id="btn">
+                登录
+              </button> -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("btn").onclick = function() {
+            window.location.href = "index.html";
+        };
+    </script>
+</body>
+
+</html>

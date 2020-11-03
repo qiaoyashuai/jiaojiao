@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+
+<body>
+    <!--The content below is only a placeholder and can be replaced.-->
+    <link rel="stylesheet" href="/bootstrap.css" />
+    <link rel="stylesheet" href="/basic.css" />
+    <script src="/ckeditor5-build-classic/ckeditor.js"></script>
+    <%-include("./comment/header.ejs")%>
+        <div class="container-fluid">
+            <div class="row">
+                <%-include("./comment/aside.ejs")%>
+                    <div class="col-sm-10">
+                        <ol class="breadcrumb">
+                            <li class="active">商品管理</li>
+                            <li class="active" id="oli">商品列表</li>
+                        </ol>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">增加商品</div>
+                            <div class="panel-body">
+                                <div class="table-responsive input-form">
+                                    <form action="/admin/doedit?id=<%=obj._id%>&page=<%=num%>&search=<%=search%>&name=<%=name%>" method="post" enctype="multipart/form-data">
+                                        <ul>
+                                            <li>
+                                                商品名称:
+                                                <input type="text" value="<%=obj.name%>" name="name" />
+                                            </li>
+                                            <li>
+                                                商品图片: <input type="file" id="file" name="imgsrc" />
+                                            </li>
+                                            <li>
+                                                <!-- 在此处预览上传的图片 当上传图片时改变此处的src -->
+                                                <img src="<%=obj.imgsrc%>" style="width: 100px" id="img" alt="" />
+                                            </li>
+                                            <li>
+                                                商品价格:
+                                                <input type="text" value="<%=obj.price%>" name="price" />
+                                            </li>
+                                            <li>
+                                                商品邮费:
+                                                <input type="text" value="<%=obj.spend%>" name="spend" />
+                                            </li>
+
+                                            <li>
+                                                商品描述:
+                                                <textarea name="description" id="ckeditor" cols="60" rows="8" style="text-align: left">
+                                                    <%=obj.description%>
+                                                </textarea
+                      >
+                    </li>
+
+                    <li>
+                      <br />
+                      <button type="submit" class="btn btn-default">
+                        提交
+                      </button>
+                    </li>
+                  </ul>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 插入富文本编辑器
+      let ckeditor;
+      var textarea = document.querySelector("#ckeditor");
+      console.log(111);
+      console.log(textarea.innerHTML);
+      console.log(222);
+      console.log(document.querySelector("#oli").innerHTML);
+      console.log(333);
+      ClassicEditor.create(textarea); //#ckeditor 多行文本上边定义的id
+      //插入结束
+      let ofile = document.getElementById("file"); //监听当改变时触发
+      let oimg = document.getElementById("img"); //暂时预览上传的图片
+      ofile.onchange = function () {
+        // 原生js  创建一个文件读取对象
+        let render = new FileReader(); //用来解析图片信息
+        // console.log(this.files[0]); this.files[0] 获取到该图片
+        // console.log(render);
+        render.readAsDataURL(this.files[0]);
+        render.onload = function () {
+          oimg.src = render.result; //替换src
+        };
+      };
+    </script>
+  </body>
+</html>
